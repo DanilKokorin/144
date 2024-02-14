@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marck+Script&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #9966cc;
+        font-family: "Marck Script", cursive;
+        margin: 0;
+      }
+
+      .heart {
+        animation: heartbeat 1s infinite;
+        background-color: red;
+        display: inline-block;
+        height: 50px;
+        margin: 0 10px;
+        position: relative;
+        top: 0;
+        transform: rotate(-45deg);
+        position: absolute;
+        left: 45%;
+        top: 45%;
+        width: 50px;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        background-color: red;
+        border-radius: 50%;
+        height: 50px;
+        position: absolute;
+        width: 50px;
+      }
+
+      .heart:before {
+        top: -25px;
+        left: 0;
+      }
+
+      .heart:after {
+        left: 25px;
+        top: 0;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1) rotate(-45deg);
+        }
+        20% {
+          transform: scale(1.25) rotate(-45deg);
+        }
+        40% {
+          transform: scale(1.5) rotate(-45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      "
+      class="box"
+    >
+      <h1 class="text">Дорогая, Катя</h1>
+      <img
+        class="img"
+        style="width: 100%; height: 40vh"
+        src="https://i.pinimg.com/originals/0c/44/89/0c44895032d26305d7a02e2a910d27ba.png"
+        alt=""
+      />
+    </div>
+  </body>
+
+  <script>
+    const step = {
+      1: {
+        text: "Дорогая, Катя",
+        img: "https://i.pinimg.com/originals/0c/44/89/0c44895032d26305d7a02e2a910d27ba.png",
+      },
+      2: {
+        text: "Поздравляю",
+        img: "https://img1.liveinternet.ru/images/attach/c/7/97/128/97128955_parensrozami.png",
+      },
+      3: {
+        text: "Тебя",
+        img: "https://cryptocoinspy.com/wp-content/uploads/2018/04/man-pointing-his-finger-at-you.jpg",
+      },
+      4: {
+        text: "С днём",
+        img: "https://mykaleidoscope.ru/x/uploads/posts/2023-12/1702688915_mykaleidoscope-ru-p-otkritki-s-dnem-rozhdeniya-vzrosloi-zhensh-60.jpg",
+      },
+      5: {
+        text: "Cвятого Валентина !!!",
+        img: "https://cdn.create.vista.com/api/media/small/239695642/stock-photo-young-naked-man-holds-red-heart",
+      },
+    };
+
+    const body = document.getElementsByTagName("body")[0];
+    const text = document.querySelector(".text");
+    const img = document.querySelector(".img");
+    let stepNow = 1;
+
+    body.addEventListener("click", () => {
+      if (stepNow === 5) {
+        document.querySelector(".box").innerHTML = "<div class='heart'></div>";
+      }
+
+      stepNow += 1;
+
+      text.innerHTML = `${step[stepNow].text}`;
+      img.src = `${step[stepNow].img}`;
+    });
+  </script>
+</html>
